@@ -190,10 +190,10 @@ public class InternalConfig {
      */
     static InternalConfig load() throws JsonParseException,
         JsonMappingException, IOException {
-        URL url = ClassLoaderHelper.getResource("/" + DEFAULT_CONFIG_RESOURCE,
+        URL url = ClassLoaderHelper.getResource(DEFAULT_CONFIG_RESOURCE,
                 InternalConfig.class);
-        if (url == null) { // Try without a leading "/"
-            url = ClassLoaderHelper.getResource(DEFAULT_CONFIG_RESOURCE,
+        if (url == null) { // Try with a leading "/"
+            url = ClassLoaderHelper.getResource("/" + DEFAULT_CONFIG_RESOURCE,
                     InternalConfig.class);
         }
         InternalConfigJsonHelper config = loadfrom(url);
